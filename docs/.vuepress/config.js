@@ -1,4 +1,4 @@
-const version = require('./../../package.json').version;
+const version = require('../package.json').version;
 const isDev = process.argv[2] === 'dev';
 const devPath = 'http://localhost:8080';
 const baseUrl = 'https://grapesjs.com';
@@ -103,7 +103,7 @@ module.exports = {
         ['/api/keymaps', 'Keymaps'],
         ['/api/undo_manager', 'Undo Manager'],
         ['/api/parser', 'Parser'],
-        ['/api/data_source_manager', 'Data Source Manager'],
+        ['/api/datasources', 'Data Sources'],
         ['/api/datasource', `${subDivider}DataSource`],
         ['/api/datarecord', `${subDivider}DataRecord`],
       ],
@@ -129,7 +129,7 @@ module.exports = {
             ['/modules/Storage', 'Storage Manager'],
             ['/modules/Modal', 'Modal'],
             ['/modules/Plugins', 'Plugins'],
-            ['/modules/DataSources', 'Data Sources'],
+            // ['/modules/DataSources', 'Data Sources'],
           ],
         },
         {
@@ -139,6 +139,7 @@ module.exports = {
             ['/guides/Symbols', 'Symbols'],
             ['/guides/Replace-Rich-Text-Editor', 'Replace Rich Text Editor'],
             ['/guides/Custom-CSS-parser', 'Use Custom CSS Parser'],
+            ['/guides/Telemetry', 'GrapesJS Telemetry'],
           ],
         },
       ],
