@@ -30,9 +30,7 @@ canvas.setCoords(...);
 
 * `canvas:dragend` When a drag operation is ended, `DataTransfer` instance passed as an argument.
 
-`canvas:dragdata` On any dataTransfer parse, `DataTransfer` instance and the `result` are passed as arguments.
-By changing `result.content` you're able to customize what is dropped.
-------------------------------------------------------------------------
+* `canvas:dragdata` On any dataTransfer parse, `DataTransfer` instance and the `result` are passed as arguments. By changing `result.content` you're able to customize what is dropped.
 
 * `canvas:drop` Something is dropped in canvas, `DataTransfer` instance and the dropped model are passed as arguments.
 
@@ -92,9 +90,7 @@ editor.on('canvas:pointer', () => {
 });
 ```
 
-`canvas:refresh` Canvas was refreshed to update elements on top,
-like spots/tools (eg. via `editor.Canvas.refresh()` or on frame resize).
---------------------------------------------------------------------------
+* `canvas:refresh` Canvas was refreshed to update elements on top, like spots/tools (eg. via `editor.Canvas.refresh()` or on frame resize).
 
 ```javascript
 editor.on('canvas:refresh', (canvasRefreshOptions) => {
@@ -102,9 +98,7 @@ editor.on('canvas:refresh', (canvasRefreshOptions) => {
 });
 ```
 
-`canvas:frame:load` Frame loaded in canvas.
-The event is triggered right after iframe's `onload`.
--------------------------------------------------------
+* `canvas:frame:load` Frame loaded in canvas. The event is triggered right after iframe's `onload`.
 
 ```javascript
 editor.on('canvas:frame:load', ({ window }) => {
@@ -112,9 +106,7 @@ editor.on('canvas:frame:load', ({ window }) => {
 });
 ```
 
-`canvas:frame:load:head` Frame head loaded in canvas.
-The event is triggered right after iframe's finished to load the head elemenets (eg. scripts)
----------------------------------------------------------------------------------------------
+* `canvas:frame:load:head` Frame head loaded in canvas. The event is triggered right after iframe's finished to load the head elements (eg. scripts)
 
 ```javascript
 editor.on('canvas:frame:load:head', ({ window }) => {
@@ -122,9 +114,7 @@ editor.on('canvas:frame:load:head', ({ window }) => {
 });
 ```
 
-`canvas:frame:load:body` Frame body loaded in canvas.
-The event is triggered when the body is rendered with components.
------------------------------------------------------------------
+* `canvas:frame:load:body` Frame body loaded in canvas. The event is triggered when the body is rendered with components.
 
 ```javascript
 editor.on('canvas:frame:load:body', ({ window }) => {
@@ -196,6 +186,40 @@ Get canvas rectangular data
 
 Returns **[Object][2]**&#x20;
 
+## startDrag
+
+Start custom drag-and-drop process.
+
+### Parameters
+
+*   `dragSource` **DragSource\<Component>** The source object for the drag operation, containing the component being dragged.
+
+### Examples
+
+```javascript
+// as component definition
+canvas.startDrag({
+ content: { type: 'my-component' }
+});
+// as HTML
+canvas.startDrag({
+ content: '<div>...</div>'
+});
+```
+
+## endDrag
+
+Ends the drag-and-drop process, resetting the drag source and clearing any drag results.
+This method can be used to finalize custom drag-and-drop content operations.
+
+### Examples
+
+```javascript
+canvas.startDrag({...});
+// ... drag finished ...
+canvas.endDrag();
+```
+
 ## hasFocus
 
 Check if the canvas is focused
@@ -222,7 +246,7 @@ passed to it. For instance, you can scroll smoothly by using
 const selected = editor.getSelected();
 // Scroll smoothly (this behavior can be polyfilled)
 canvas.scrollTo(selected, { behavior: 'smooth' });
-// Force the scroll, even if the element is alredy visible
+// Force the scroll, even if the element is already visible
 canvas.scrollTo(selected, { force: true });
 ```
 
